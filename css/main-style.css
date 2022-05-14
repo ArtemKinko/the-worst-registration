@@ -1,0 +1,60 @@
+html, body {
+    border-left: 1px black;
+    margin: 0 0 0 0;
+    height: 100%;
+    background-color: black;
+}
+
+a {
+    text-align: center;
+    font-size: 10em;
+    margin-top: 200px;
+    line-height: 1;
+    text-decoration: none;
+    color: #fff;
+    font-family: Monoton;
+    animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1177,
+        0 0 35px #ff1177, 0 0 40px #ff1177, 0 0 50px #ff1177, 0 0 75px #ff1177;
+    }
+    to {
+        text-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 7px #fff, 0 0 10px #ff1177,
+        0 0 17px #ff1177, 0 0 20px #ff1177, 0 0 25px #ff1177, 0 0 37px #ff1177;
+    }
+}
+
+#container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    border-bottom: 1px solid rgb(58, 58, 60);
+}
+
+.title {
+    color: gainsboro;
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 5rem 0 0.4rem 0;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    background: linear-gradient(to right, #FF512F 0%, #DD2476 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.transition-fade {
+    opacity: 1;
+    transition: 500ms;
+}
+
+html.is-animating .transition-fade {
+    opacity: 0;
+}

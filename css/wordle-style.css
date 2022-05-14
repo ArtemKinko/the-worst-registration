@@ -1,18 +1,15 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 html, body {
     height: 100%;
+    margin: 0 0 0 0;
+    background-color: black;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 #container {
     display: flex;
-    background-color: black;
     height: 100%;
+    margin-top: 50px;
     align-items: center;
     flex-direction: column;
 }
