@@ -2,9 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ужасная регистрация. Логин</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="../js/login-script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel='stylesheet'>
+    <link rel="stylesheet" href="../css/login-style.css"/>
 </head>
-<body>
-    <h1 class="title">Скоро продолжение!</h1>
+<body class="body">
+    <section class="timer-block">
+        <p class="timer-numbers">
+            <span>00</span> :
+            <span>00</span>
+        </p>
+        <div id="10min" class="timer-line">
+            <span></span>
+        </div>
+    </section>
+    <section class="info">
+        <h1 class="title">3. Соберите логин в темноте</h1>
+        <a>Используйте курсор как фонарик. Кнопки меняются каждые 10 секунд и при выборе буквы. Минимальная длина логина: 10 символов</a>
+    </section>
+    <section class="buttonGame">
+        <button class="shadowButton" onclick="addNewLetter(this)">q</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">w</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">e</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">r</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">t</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">y</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">u</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">i</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">o</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">p</button>
+
+        <button class="shadowButton" onclick="addNewLetter(this)">a</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">s</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">d</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">f</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">g</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">h</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">j</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">k</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">l</button>
+
+        <button class="shadowButton" onclick="addNewLetter(this)">z</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">x</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">c</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">v</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">b</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">n</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">m</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">подтвердить</button>
+        <button class="shadowButton" onclick="addNewLetter(this)">стереть логин</button>
+    </section>
+    <section class="login" id="yourLogin">
+        <h1 class="title">Ваш логин:</h1>
+        <a id="login">...</a>
+    </section>
+    <div id='light'></div>
 </body>
 </html>
