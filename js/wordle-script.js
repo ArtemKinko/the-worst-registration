@@ -1,10 +1,11 @@
+mainword = "";
+
 class Countdown {
     constructor(timer, countdown, from, to) {
         this.timer      = timer;
         this.countdown  = countdown;
         this.start      = from;
         this.finish     = to;
-
         this.run();
     }
 
@@ -47,7 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let guessedWords = [[]];
     let availableSpace = 1;
-    let word = "якорь";
+    word = "";
+    $.get('http://127.0.0.1:5000/getWordleWord', function(data) {
+        word = data['word'];
+    });
     let guessedWordCount = 0;
 
     const keys = document.querySelectorAll(".keyboard-row button");
@@ -101,35 +105,51 @@ document.addEventListener("DOMContentLoaded", () => {
         const firstLetterId = guessedWordCount * 5 + 1;
         const currentWord = currentWordArr.join('');
         const interval = 200;
-        currentWordArr.forEach((letter, index) => {
-            setTimeout(() => {
-                const tileColor = getTileColor(letter, index);
-                const letterId = firstLetterId + index;
-                const letterEl = document.getElementById(letterId);
-                const buttonLetterEl = document.getElementById(letter);
-                console.log(buttonLetterEl.style.backgroundColor);
-                letterEl.classList.add("animate__zoomIn");
-                letterEl.style = `background-color:${tileColor}; border-color:${tileColor}`;
-                if (buttonLetterEl.style.backgroundColor === "" ||
-                    buttonLetterEl.style.backgroundColor === "rgb(181, 159, 59)") {
-                    buttonLetterEl.style = `background-color:${tileColor}; border-color:${tileColor}`;
+
+        var url = new URL("http://127.0.0.1:5000/checkWordleWord");
+        url.searchParams.append('word', currentWord);
+        response = "";
+        $.get(url, function(data) {
+            response = data['isCorrect'];
+            if (response === "false") {
+                alert("Такого слова нет в словаре, попробуйте еще раз");
+                return;
+            }
+            currentWordArr.forEach((letter, index) => {
+                setTimeout(() => {
+                    const tileColor = getTileColor(letter, index);
+                    const letterId = firstLetterId + index;
+                    const letterEl = document.getElementById(letterId);
+                    const buttonLetterEl = document.getElementById(letter);
+                    console.log(buttonLetterEl.style.backgroundColor);
+                    letterEl.classList.add("animate__flipInY");
+                    letterEl.style = `background-color:${tileColor}; border-color:${tileColor}`;
+                    if (buttonLetterEl.style.backgroundColor === "" ||
+                        buttonLetterEl.style.backgroundColor === "rgb(181, 159, 59)") {
+                        buttonLetterEl.style = `background-color:${tileColor}; border-color:${tileColor}`;
+                    }
+                }, interval * index);
+            });
+
+            guessedWordCount += 1;
+
+            if (currentWord === word) {
+                window.alert("Слово разгадано! Скоро мы перенаправим Вас на следующий шаг");
+                async function goNext() {
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    window.location.href = '../html/login-page.html';
                 }
-            }, interval * index);
+                goNext();
+                return;
+            }
+
+            if (guessedWords.length === 6) {
+                window.alert(`Вы потратили все попытки. Загаданное слово: ${word}. Попробуйте решить еще раз!`);
+                return;
+            }
+
+            guessedWords.push([]);
         });
-
-        guessedWordCount += 1;
-
-        if (currentWord === word) {
-            window.alert("Слово разгадано!");
-            return;
-        }
-
-        if (guessedWords.length === 6) {
-            window.alert(`Вы потратили все попытки. Загаданное слово: ${word}. Попробуйте решить еще раз!`);
-            return;
-        }
-
-        guessedWords.push([]);
     }
 
     function getCurrentWordArr() {
