@@ -54,6 +54,8 @@ window.onload = _ => {
         new Date().getTime(),
         new Date().getTime() + 1000 * 60 * 15
     );
+    sessionStorage.setItem("endDate", (new Date().getTime() + 1000 * 60 * 15).toString());
+    sessionStorage.setItem("startDate", (new Date().getTime()).toString());
     vid = new ModalVideo('.js-modal-btn', {mute: '1'});
 };
 
@@ -72,7 +74,7 @@ function checkGoNext() {
             "Раз Вам нечем заняться, посмотрите смешной видеоролик с котом.");
         }
         else
-            window.location.href = 'newPage.html';
+            window.location.href = '../html/wordle-page.html';
 
     }
     else {

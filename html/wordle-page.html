@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <title>Wordle step</title>
     <script src="../js/wordle-script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel='stylesheet'>
     <link rel="stylesheet" href="../css/wordle-style.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
+    <section class="timer-block">
+        <p class="timer-numbers">
+            <span>00</span> :
+            <span>00</span>
+        </p>
+        <div id="10min" class="timer-line">
+            <span></span>
+        </div>
+    </section>
     <div id="container">
+        <h1 class="title">2. Отгадайте слово, чтобы подтвердить, что Вы не робот</h1>
         <div id="game">
             <header>
                 <h1 class="title">WORDLE</h1>
+                <a href="https://ru.wikipedia.org/wiki/Wordle">(кликните для правил)</a>
             </header>
 
             <div id="board-container">

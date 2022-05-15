@@ -1,31 +1,70 @@
 html, body {
     height: 100%;
+    padding: 0;
     margin: 0 0 0 0;
     background-color: black;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
+.timer-block .text {
+    font-family: "Helvetica", Arial, sans-serif;
+    font-weight: 900;
+    color: white;
+}
+
+.timer-block .timer-line {
+    height: 5px;
+    background-color: grey;
+    position: relative;
+    overflow: hidden;
+}
+
+.timer-block .timer-line > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(to right, #FF512F 0%, #DD2476 100%);
+    transition: 1s linear;
+}
+
+.timer-block .timer-numbers {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 25px;
+    color: white;
+}
+
 #container {
     display: flex;
     height: 100%;
-    margin-top: 50px;
+    margin-top: 0;
     align-items: center;
     flex-direction: column;
 }
 
 header {
+    text-align: center;
     border-bottom: 1px solid rgb(58, 58, 60);
 }
 
-.title {
+.title, a {
     color: gainsboro;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
-    margin: 0.4rem 0 0.4rem 0;
+    margin: 4rem 0 0 0;
     text-align: center;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-family: 'Raleway', sans-serif;
+    background: linear-gradient(to right, #FF512F 0%, #DD2476 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+a {
+    font-size: 1rem;
 }
 
 #board-container {
