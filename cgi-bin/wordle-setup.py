@@ -48,26 +48,44 @@ def send_email():
         email = request.args.get("email")
 
         # generate message
+        symbols = []
+        text = []
+        with open('../txt/symbols.txt') as f:
+            for _ in range(50):
+                symbols.append(f.readline()[:1])
+                text.append(f.readline().split("\n")[0])
+        f.close()
+        picked = []
+        message = ""
+        indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                   10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+                   20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+                   30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
+                   40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+        random.shuffle(indexes)
+        for i in range(10):
+            picked.append(symbols[indexes[i]])
+            message += (str(i + 1) + ". " + text[indexes[i]] + "\n")
 
+        print(message);
 
         # send message
         str_message = "Мы получили запрос на ужасную регистрацию, в которой использовалась Ваша почта.\n\n " \
-                      "Пожалуйста, введите данные символы на странице подтверждения в том же порядке"
+                      "Пожалуйста, введите данные символы на странице подтверждения в том же порядке\n\n"
+        str_message += message
 
 
         msg = MIMEText(str_message, 'plain', 'utf-8')
         smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
         smtpObj.starttls()
-        # ПЕРЕД ЗАПУСКОМ ВСТАВЬТЕ НИЖЕ ПОЧТУ И ЕЕ ТОКЕН ДЛЯ ДОСТУПА К РАССЫЛКЕ
         smtpObj.login('artem.kinko.dev@gmail.com', 'nblnfjlkaokuovar')
-        smtpObj.sendmail(email, "artem.kinko.dev@gmail.com", msg.as_string())
+        smtpObj.sendmail(email, email, msg.as_string())
         smtpObj.quit()
 
         # add to response
-        response = flask.jsonify({'email': email})
+        response = flask.jsonify({'picked': picked})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
-
 
 if __name__=='__main__':
     app.run()

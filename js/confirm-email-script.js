@@ -1,3 +1,12 @@
+symbols = ['☞', '⌤', '♣', '☂', '⅃', '↯', '❄', '⁂', '☣', '⋮',
+    '✏', '⅁', '☯', '☈', '♯', '✡', '↬', '℗', '€', '♫',
+    'ℵ', '♘', '☪', '♃', '☏', '⌖', '☉', '⌔', '☭', '♺',
+    'ᛒ', '⨷', '⋙', '⅖', '⚤', '✒', '✃', '▥', '∅', '⏏',
+    '◓', '⋱', '☃', '⋲', 'ᛃ', 'ᛉ', '◔', '⅝', '✄', '⚘'];
+
+answer = [];
+current_index = 0;
+
 class Countdown {
     constructor(timer, countdown, from, to) {
         this.timer      = timer;
@@ -31,6 +40,27 @@ class Countdown {
     }
 }
 
+function createSquares() {
+    const gameBoard = document.getElementById("board")
+
+    for (let index = 0; index < 50; index++) {
+        let square = document.createElement("div");
+        square.classList.add("square");
+        square.classList.add("animate__animated");
+        square.setAttribute("id", index + 1);
+        square.textContent = symbols[index];
+        square.addEventListener("click", function(){checkInput(square)}, false);
+        gameBoard.appendChild(square);
+    }
+
+    email = sessionStorage.getItem("email");
+    var url = new URL("http://127.0.0.1:5000/sendEmail");
+    url.searchParams.append('email', email);
+    $.get(url, function(data) {
+        answer = data['picked'];
+    })
+}
+
 window.onload = _ => {
     new Countdown(
         document.getElementById('10min'),
@@ -38,13 +68,21 @@ window.onload = _ => {
         sessionStorage.getItem("startDate"),
         sessionStorage.getItem("endDate")
     );
-
-    email = sessionStorage.getItem("email");
-    var url = new URL("http://127.0.0.1:5000/sendEmail");
-    url.searchParams.append('email', email);
-    response = "";
-    $.get(url, function(data) {
-        response = data['email'];
-    })
-
+    createSquares();
 };
+
+function checkInput(button) {
+    if (button.textContent === answer[current_index]) {
+        button.style.backgroundColor = "#40a645";
+        button.classList.add("animate__bounceIn");
+        current_index++;
+    }
+    else {
+        button.classList.remove("animate__headShake");
+        button.classList.add("animate__headShake");
+    }
+    if (current_index === 10) {
+        alert("Почта подтверждена, продолжаем регистрацию.");
+        window.location.href = '../html/phone-page.html';
+    }
+}

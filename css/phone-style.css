@@ -57,36 +57,3 @@ a {
     font-size: 1rem;
     z-index: 20;
 }
-
-#symbols {
-    font-size: 4rem;
-}
-
-#board-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    overflow: hidden;
-}
-
-#board {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-gap: 5px;
-    padding: 100px;
-    box-sizing: border-box;
-}
-
-.square {
-    border: 2px solid rgb(58, 58, 60);
-    min-width: 80px;
-    min-height: 80px;
-    font-size: 50px;
-    font-weight: bold;
-    color: gainsboro;
-    text-transform: uppercase;
-
-    display: flex;
-    justify-content: center;
-}
