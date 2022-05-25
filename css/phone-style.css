@@ -57,3 +57,56 @@ a {
     font-size: 1rem;
     z-index: 20;
 }
+
+#board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-top: 70px;
+    padding: 10px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+}
+
+.square {
+    border: 2px solid rgb(58, 58, 60);
+    min-width: 30px;
+    min-height: 30px;
+    font-weight: bold;
+    color: gainsboro;
+    text-transform: uppercase;
+    transform: scale(2);
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 1170px;
+}
+
+#yourPhone {
+    text-align: center;
+}
+
+#phone {
+    font-size: 2rem;
+}
+
+#button {
+    font-size: 1rem;
+    background-color: black;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px;
+    font-family: 'Raleway', sans-serif;
+    color: #DD2476;
+    border-radius: 20px;
+}

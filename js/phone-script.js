@@ -1,3 +1,74 @@
+numbers = [[0, 1, 1, 0,
+           1, 0, 0, 1,
+           1, 0, 0, 1,
+           1, 0, 0, 1,
+           1, 0, 0, 1,
+           1, 0, 0, 1,
+           0, 1, 1, 0],
+           [0, 0, 1, 0,
+           0, 1, 1, 0,
+           0, 0, 1, 0,
+           0, 0, 1, 0,
+           0, 0, 1, 0,
+           0, 0, 1, 0,
+           0, 0, 1, 0],
+           [0, 1, 1, 0,
+           1, 0, 0, 1,
+           1, 0, 0, 1,
+           0, 0, 1, 0,
+           0, 1, 0, 0,
+           1, 0, 0, 0,
+           1, 1, 1, 1],
+           [0, 1, 1, 0,
+           1, 0, 0, 1,
+           0, 0, 0, 1,
+           0, 0, 1, 0,
+           0, 0, 0, 1,
+           1, 0, 0, 1,
+           0, 1, 1, 0],
+           [1, 0, 0, 0,
+           1, 0, 1, 0,
+           1, 0, 1, 0,
+           1, 1, 1, 1,
+           0, 0, 1, 0,
+           0, 0, 1, 0,
+           0, 0, 1, 0],
+           [1, 1, 1, 1,
+           1, 0, 0, 0,
+           1, 0, 0, 0,
+           1, 1, 1, 0,
+           0, 0, 0, 1,
+           1, 0, 0, 1,
+           0, 1, 1, 0],
+           [0, 1, 1, 0,
+           1, 0, 0, 1,
+           1, 0, 0, 0,
+           1, 1, 1, 0,
+           1, 0, 0, 1,
+           1, 0, 0, 1,
+           0, 1, 1, 0],
+           [1, 1, 1, 1,
+           1, 0, 0, 1,
+           0, 0, 0, 1,
+           0, 0, 1, 0,
+           0, 0, 1, 0,
+           0, 1, 0, 0,
+           0, 1, 0, 0],
+           [0, 1, 1, 0,
+           1, 0, 0, 1,
+           1, 0, 0, 1,
+           0, 1, 1, 0,
+           1, 0, 0, 1,
+           1, 0, 0, 1,
+           0, 1, 1, 0],
+           [0, 1, 1, 0,
+           1, 0, 0, 1,
+           1, 0, 0, 1,
+           0, 1, 1, 1,
+           0, 0, 0, 1,
+           1, 0, 0, 1,
+           0, 1, 1, 0]];
+
 class Countdown {
     constructor(timer, countdown, from, to) {
         this.timer      = timer;
@@ -31,6 +102,25 @@ class Countdown {
     }
 }
 
+function createSquares() {
+    const gameContainer = document.getElementById("board-container");
+
+    for (let num = 0; num < 10; num++) {
+        let board = document.createElement("div");
+        board.classList.add("board");
+        for (let index = 0; index < 28; index++) {
+            let square = document.createElement("input");
+            square.setAttribute("type", "checkbox");
+            square.classList.add("square");
+            square.classList.add("animate__animated");
+            square.addEventListener("click", function(){check_squares(square)}, false);
+            square.setAttribute("id", num.toString() + "/" + index.toString());
+            board.appendChild(square);
+        }
+        gameContainer.appendChild(board);
+    }
+}
+
 window.onload = _ => {
     new Countdown(
         document.getElementById('10min'),
@@ -38,4 +128,43 @@ window.onload = _ => {
         sessionStorage.getItem("startDate"),
         sessionStorage.getItem("endDate")
     );
+    createSquares();
 };
+
+function check_same(current, numbers) {
+    for (let i = 0; i < current.length; i++)
+        if (current[i] !== numbers[i])
+            return false;
+    return true;
+}
+
+function check_squares(button) {
+    button_index = button.id.split("/")[0];
+    buttons = document.getElementsByClassName("square");
+    current_symbols = [];
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].id.split("/")[0] === button_index)
+            if (buttons[i].checked === true)
+                current_symbols.push(1);
+            else
+                current_symbols.push(0);
+    }
+    phone = document.getElementById("phone");
+    for (let i = 0; i < numbers.length; i++) {
+        if (check_same(current_symbols, numbers[i])) {
+            phone.textContent = phone.textContent.substring(0, button_index * 2) + i.toString() + phone.textContent.substring(button_index * 2 + 1, phone.textContent.length);
+            return;
+        }
+    }
+    phone.textContent = phone.textContent.substring(0, button_index * 2) + "_" + phone.textContent.substring(button_index * 2 + 1,  phone.textContent.length);
+}
+
+function confirm() {
+    phone = document.getElementById("phone").textContent.split(" ").join('');
+    if (phone.includes("_"))
+        alert("Заполнены не все поля номера.");
+    else {
+        sessionStorage.setItem("phone", phone);
+        window.location.href = '../html/password-page.html';
+    }
+}

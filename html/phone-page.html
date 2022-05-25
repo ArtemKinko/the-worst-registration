@@ -10,18 +10,33 @@
     <link rel="stylesheet" href="../css/phone-style.css"/>
 </head>
 <body>
-<section class="timer-block">
-    <p class="timer-numbers">
-        <span>00</span> :
-        <span>00</span>
-    </p>
-    <div id="10min" class="timer-line">
-        <span></span>
+    <section class="timer-block">
+        <p class="timer-numbers">
+            <span>00</span> :
+            <span>00</span>
+        </p>
+        <div id="10min" class="timer-line">
+            <span></span>
+        </div>
+    </section>
+    <section class="info">
+        <h1 class="title">7. Введите номер телефона</h1>
+        <a>Используйте чекбоксы для рисования цифр. Введите номер в формате (800)555-35-35.</a>
+    </section>
+    <div id="board-container">
     </div>
-</section>
-<section class="info">
-    <h1 class="title">7. Введите номер телефона</h1>
-    <a>Надеюсь, Вы помните, как пользоваться таким телефоном. Введите номер в формате (800)55-53-535.</a>
-</section>
+    <section id="tip" style="text-align: center">
+        <a>Следуйте данному шаблону:</a>
+        <br>
+        <img src="../images/phone-map.png" alt="phone-map">
+    </section>
+    <section id="yourPhone">
+        <h1 class="title" style="margin-top: 30px">Ваш номер телефона:</h1>
+        <br>
+        <a id="phone">_ _ _ _ _ _ _ _ _ _</a>
+        <br>
+        <br>
+        <input id="button" type="button" value="Подтвердить" onclick="confirm()"/>
+    </section>
 </body>
 </html>
