@@ -72,6 +72,7 @@ window.onload = _ => {
         sessionStorage.getItem("endDate")
     );
     createPasswords();
+    createBanner();
 };
 
 function changeTask() {
@@ -146,4 +147,16 @@ function startGame() {
     current_phase = 1;
     document.getElementById("phase").textContent = "1/8";
     newPhase();
+}
+
+async function createBanner() {
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    banner = document.getElementById("banner");
+    banner.hidden = false;
+    banner.classList.add("animate__slideInDown");
+}
+
+function closeBanner() {
+    banner = document.getElementById("banner");
+    banner.classList.add("animate__slideOutUp");
 }

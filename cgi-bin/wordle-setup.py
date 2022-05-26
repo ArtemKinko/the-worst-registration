@@ -129,7 +129,7 @@ def get_users():
                                                  user='root',
                                                  password='')
 
-            mySql_insert_query = 'SELECT * FROM user;'
+            mySql_insert_query = 'SELECT * FROM user ORDER BY time DESC;'
 
             cursor = connection.cursor()
             result = cursor.execute(mySql_insert_query)

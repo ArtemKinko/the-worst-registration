@@ -188,3 +188,15 @@ function verify() {
     else
         alert("Почта имеет некорректный вид. Вы уверены, что ввели ее правильно?");
 }
+
+function addMail() {
+    email = document.getElementById("email").textContent += "@mail.ru";
+}
+
+function addGMail() {
+    email = document.getElementById("email").textContent += "@gmail.com";
+}
+
+function addYMail() {
+    email = document.getElementById("email").textContent += "@yandex.ru";
+}

@@ -69,6 +69,7 @@ window.onload = _ => {
         sessionStorage.getItem("endDate")
     );
     createSquares();
+    createBanner();
 };
 
 function checkInput(button) {
@@ -85,4 +86,16 @@ function checkInput(button) {
         alert("Почта подтверждена, продолжаем регистрацию.");
         window.location.href = '../html/phone-page.html';
     }
+}
+
+async function createBanner() {
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    banner = document.getElementById("banner");
+    banner.hidden = false;
+    banner.classList.add("animate__slideInDown");
+}
+
+function closeBanner() {
+    banner = document.getElementById("banner");
+    banner.classList.add("animate__slideOutUp");
 }

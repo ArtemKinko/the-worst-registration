@@ -57,6 +57,7 @@ window.onload = _ => {
     sessionStorage.setItem("endDate", (new Date().getTime() + 1000 * 60 * 15).toString());
     sessionStorage.setItem("startDate", (new Date().getTime()).toString());
     vid = new ModalVideo('.js-modal-btn', {mute: '1'});
+    createBanner();
 };
 
 function handleChange(checkbox) {
@@ -80,4 +81,16 @@ function checkGoNext() {
     else {
         alert("Кажется, Вы забыли поставить галочку на принятие условий вечных мук. Зато Вы можете насладиться видеороликом с котом!");
     }
+}
+
+async function createBanner() {
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    banner = document.getElementById("banner");
+    banner.hidden = false;
+    banner.classList.add("animate__slideInDown");
+}
+
+function closeBanner() {
+    banner = document.getElementById("banner");
+    banner.classList.add("animate__slideOutUp");
 }

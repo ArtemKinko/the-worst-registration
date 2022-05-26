@@ -7,7 +7,7 @@ function changeNum() {
     document.getElementById("numRate").textContent = num.toString();
 }
 
-window.onload = _ => {
+async function workWithDB() {
     document.getElementById("login").textContent = sessionStorage.getItem("login");
     document.getElementById("email").textContent = sessionStorage.getItem("email");
     document.getElementById("phone").textContent = sessionStorage.getItem("phone");
@@ -24,6 +24,8 @@ window.onload = _ => {
     $.get(url, function(data) {
         response = data["ok"];
     });
+
+    await new Promise(resolve => setTimeout(resolve, 5000));
 
     var url = new URL("http://127.0.0.1:5000/getUsers");
     response = "";
@@ -44,4 +46,8 @@ window.onload = _ => {
             table.appendChild(tr);
         }
     });
+}
+
+window.onload = _ => {
+    workWithDB();
 };

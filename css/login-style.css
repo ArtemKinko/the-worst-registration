@@ -99,3 +99,76 @@ a {
 #login {
     font-size: 1.5rem;
 }
+
+.banner{
+    position:absolute;
+    margin-left: 275px;
+    width:60%;
+    background: #8d1416;
+    padding:10px;
+    box-shadow: 1px 1px 8px #373535;}
+
+.banner__logo{
+    width: 100px;
+    height: 100px;
+    background: url('http://campfires.io/wp-content/uploads/2015/01/campfires-wordmark-reversed-400.png');
+    background-size: cover;
+    float: left;
+    margin-right:10px;}
+
+i{
+    font-size:12px;
+    color:lightgray;}
+
+.banner__text-wrap{
+    display:inline-block;
+    vertical-align:middle;
+    margin-top:15px;
+    margin-left: 100px;
+    width: 500px}
+
+.banner__title{
+    font-family:'Oswald','open-sans';
+    font-size:1.2em;
+    clear:both;
+    color:white;}
+
+.banner__slogan{
+    color:gainsboro;}
+
+.banner__close a{
+    -webkit-text-fill-color: white;
+    margin-top: 10px;
+    padding: 2px 10px 5px;
+    text-decoration: none;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.banner__close a:hover {
+    cursor: pointer;
+}
+
+.banner__download{
+    display: inline-block;
+    position: absolute;
+    background-color: #FFF;
+    padding: 8px;
+    border-radius: 3px;
+    color: #186160;
+    bottom: 40px;
+    right: 9px;
+}
+
+.clear{
+    clear:both;}
+
+.banner_image {
+    box-shadow: 1px 1px 8px #373535;
+    height: 100px;
+    margin-left: -650px;
+    position: absolute;
+}

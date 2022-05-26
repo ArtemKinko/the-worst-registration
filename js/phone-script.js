@@ -129,6 +129,7 @@ window.onload = _ => {
         sessionStorage.getItem("endDate")
     );
     createSquares();
+    createBanner();
 };
 
 function check_same(current, numbers) {
@@ -167,4 +168,16 @@ function confirm() {
         sessionStorage.setItem("phone", phone);
         window.location.href = '../html/password-page.html';
     }
+}
+
+async function createBanner() {
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    banner = document.getElementById("banner");
+    banner.hidden = false;
+    banner.classList.add("animate__slideInDown");
+}
+
+function closeBanner() {
+    banner = document.getElementById("banner");
+    banner.classList.add("animate__slideOutUp");
 }

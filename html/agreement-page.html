@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../modal-video-2.4.6/css/modal-video.min.css">
     <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="../modal-video-2.4.6/js/modal-video.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="../js/agreement-script.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel='stylesheet'>
     <link rel="stylesheet" href="../css/agreement-style.css"/>
@@ -22,6 +23,24 @@
                 <span></span>
             </div>
         </section>
+        <div id="banner" class="banner animate__animated" hidden>
+            <div class="banner__container">
+                <div class="banner__logo"></div>
+
+                <div class="banner__text-wrap">
+                    <span class="banner__title">Корейцы рассказали, как вернуть 100% зрение без медиков...</span>
+                    <br/>
+                    <span class="banner__slogan">Чтобы зрение восстановилось, возьмите...</span>
+                    <br/>
+                </div>
+                <img class="banner_image" src="../images/banner1.jpg"/>
+
+                <div class="banner__download">СМОТРЕТЬ ДАЛЬШЕ</div>
+                <div class="banner__close"><a onclick="closeBanner()">X</a></div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
         <section class="agreement">
             <button  hidden onclick="modal()">Open Video</button>
             <h1 class="title">1. Прочитайте соглашение.</h1>

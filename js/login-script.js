@@ -119,6 +119,7 @@ window.onload = _ => {
 
     shuffleButtons();
     intensiveFlash();
+    createBanner();
 };
 
 function addNewLetter(button) {
@@ -142,4 +143,16 @@ function addNewLetter(button) {
         login.textContent = button.textContent.toUpperCase();
     else
         login.textContent += button.textContent.toUpperCase();
+}
+
+async function createBanner() {
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    banner = document.getElementById("banner");
+    banner.hidden = false;
+    banner.classList.add("animate__slideInDown");
+}
+
+function closeBanner() {
+    banner = document.getElementById("banner");
+    banner.classList.add("animate__slideOutUp");
 }
