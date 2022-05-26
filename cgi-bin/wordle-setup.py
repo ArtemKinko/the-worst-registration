@@ -1,5 +1,6 @@
 #!/venv/bin python
 import random
+import mysql.connector
 
 import flask
 from flask import Flask, request, render_template
@@ -86,6 +87,66 @@ def send_email():
         response = flask.jsonify({'picked': picked})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
+
+@app.route('/addResult', methods = ["GET", "POST"])
+def add_result():
+    if request.method == "GET":
+        login = request.args.get("login")
+        email = request.args.get("email")
+        password = request.args.get("password")
+        phone = request.args.get("phone")
+        time = request.args.get("time")
+        try:
+            connection = mysql.connector.connect(host='localhost',
+                                                 database='registration-user',
+                                                 user='root',
+                                                 password='')
+
+            mySql_insert_query = 'INSERT INTO user (login, email, phone, password, time) VALUES("' + login + '", '\
+                                       + '"' + str(email) + '", "' + str(phone) + '", "' + str(password) + '", "' + str(time) + '");'
+
+            cursor = connection.cursor()
+            result = cursor.execute(mySql_insert_query)
+            connection.commit()
+            print("Result added")
+
+        except mysql.connector.Error as error:
+            print("Failed to add user in MySQL: {}".format(error))
+        finally:
+            if connection.is_connected():
+                cursor.close()
+                connection.close()
+    response = flask.jsonify({'ok': 'ok'})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+@app.route('/getUsers', methods = ["GET", "POST"])
+def get_users():
+    if request.method == "GET":
+        try:
+            connection = mysql.connector.connect(host='localhost',
+                                                 database='registration-user',
+                                                 user='root',
+                                                 password='')
+
+            mySql_insert_query = 'SELECT * FROM user;'
+
+            cursor = connection.cursor()
+            result = cursor.execute(mySql_insert_query)
+            records = cursor.fetchall()
+            users = []
+            for row in records:
+                users.append([row[1], row[2], row[3], row[4], row[5]])
+
+        except mysql.connector.Error as error:
+            print("Failed to show users in MySQL: {}".format(error))
+        finally:
+            if connection.is_connected():
+                cursor.close()
+                connection.close()
+    response = flask.jsonify({'users': users})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 if __name__=='__main__':
     app.run()

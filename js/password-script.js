@@ -115,7 +115,10 @@ async function clickedButton(button) {
             if (current_word.length === current_phase) {
                 if (current_phase === 8) {
                     alert("Регистрация окончена! Перенаправляем к таблице лидеров");
-                    sessionStorage.setItem("password", picked_password);
+                    sessionStorage.setItem("password", document.getElementById("select").value);
+                    min = document.getElementById("minsTimer").textContent;
+                    sec = document.getElementById("secsTimer").textContent;
+                    sessionStorage.setItem("time", min + ":" + sec);
                     window.location.href = '../html/leaderboard-page.html';
                 }
                 current_phase++;

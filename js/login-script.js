@@ -125,8 +125,10 @@ function addNewLetter(button) {
     flashbang();
     login = document.getElementById("login");
     if (button.textContent === "подтвердить") {
-        if (login.textContent.length >= 10)
+        if (login.textContent.length >= 10) {
+            sessionStorage.setItem("login", login.textContent);
             window.location.href = '../html/email-page.html';
+        }
         else {
             alert("Ваш логин меньше 10 символов. Ловите гранату!");
             return;

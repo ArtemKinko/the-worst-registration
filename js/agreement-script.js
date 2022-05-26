@@ -69,9 +69,9 @@ function handleChange(checkbox) {
 
 function checkGoNext() {
     if (document.getElementById("agreeCheckBox").checked == true) {
-        if ((minutes_p * 60 + seconds_p) >= 850) {
+        if ((minutes_p * 60 + seconds_p) >= 870) {
             alert("Вы очень плохо поступили. Вам хватило " + (60 - seconds_p) + " секунд, чтобы прочитать соглашение? " +
-            "Раз Вам нечем заняться, посмотрите смешной видеоролик с котом.");
+            "Потратьте хотя бы 30 секунд. Раз Вам нечем заняться, посмотрите смешной видеоролик с котом.");
         }
         else
             window.location.href = '../html/wordle-page.html';

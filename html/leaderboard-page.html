@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ужасная регистрация. Таблица лидеров</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="../js/leaderboard-script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel='stylesheet'>
+    <link rel="stylesheet" href="../css/leaderboard-style.css"/>
+</head>
+<body>
+    <section class="info">
+        <h1 id="title" class="title">Поздравляем с окончанием регистрации!</h1>
+        <a id="titleInfo">Посмотрите свои данные, а также узнайте результаты лидеров</a>
+    </section>
+    <br>
+    <section id="yourInfo">
+        <table id="infoTable">
+            <tr>
+                <th><a>Логин:</a></th>
+                <th><a id="login">ArtemKinko</a></th>
+            </tr>
+            <tr>
+                <th><a>Почта:</a></th>
+                <th><a id="email">artem.kinko.edu@gmail.com</a></th>
+            </tr>
+            <tr>
+                <th><a>Телефон:</a></th>
+                <th><a id="phone">8005553535</a></th>
+            </tr>
+            <tr>
+                <th><a>Пароль:</a></th>
+                <th><a id="password">password</a></th>
+            </tr>
+            <tr>
+                <th><a>Осталось времени:</a></th>
+                <th><a id="time">00:00</a></th>
+            </tr>
+        </table>
+        <br>
+        <a>Оцените регистрацию по шкале от 0 до 30</a>
+        <div id="numRate" class="value">30</div>
+        <input id="rate" oninput="changeNum()" type="range" min="0" max="30" step="1" value="30">
+    </section>
+    <section id="leaderboard">
+        <h1 class="title">Таблица лидеров:</h1>
+        <table id="tableLeaders">
+            <tr class="trLow">
+                <th class="thLow"><a>Логин</a></th>
+                <th class="thLow"><a>Почта</a></th>
+                <th class="thLow"><a>Телефон</a></th>
+                <th class="thLow"><a>Пароль</a></th>
+                <th class="thLow"><a>Осталось времени</a></th>
+            </tr>
+        </table>
+    </section>
+</body>
+</html>
